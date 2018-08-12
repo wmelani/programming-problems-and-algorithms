@@ -40,7 +40,7 @@ public class PrintUtils {
     }
 
 
-    public static <T> void prettyPrint(T[] array) {
+    public static <T> void prettyPrint(Object[] array) {
         val indexes = IntStream.rangeClosed(0, array.length - 1)
                 .boxed()
                 .map(n -> "i:" + n)
