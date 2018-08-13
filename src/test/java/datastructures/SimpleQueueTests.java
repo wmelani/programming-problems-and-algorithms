@@ -45,6 +45,36 @@ public class SimpleQueueTests {
     }
 
     @Test
+    public void isEmptyIsTrueIfEmpty() {
+        var queue = new SimpleQueue<Boolean>();
+        assertTrue(queue.isEmpty());
+    }
+
+    @Test
+    public void isEmptyIsTrueIfEmptyAfterChanges() {
+        var queue = new SimpleQueue<Boolean>();
+        assertTrue(queue.push(true));
+        assertTrue(queue.push(false));
+        assertTrue(queue.poll());
+        assertFalse(queue.poll());
+        assertTrue(queue.isEmpty());
+    }
+
+    @Test
+    public void isEmptyIsTrueIfEmptyAfterChangesAndPointerOverlap() {
+        var queue = new SimpleQueue<Boolean>(1);
+        assertTrue(queue.push(true));
+        assertTrue(queue.poll());
+        assertTrue(queue.isEmpty());
+    }
+
+    @Test
+    public void isFullIsFalseIfEmpty() {
+        var queue = new SimpleQueue<Boolean>();
+        assertFalse(queue.isFull());
+    }
+
+    @Test
     public void canClearQueue() {
         var queue = new SimpleQueue<Object>();
         var one = new Object();

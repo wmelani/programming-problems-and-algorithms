@@ -24,7 +24,7 @@ public class SimpleQueue<T> implements Queue<T> {
         this.size = this.list.size();
     }
 
-    SimpleQueue(int limit) {
+    public SimpleQueue(int limit) {
         this.list = new DynamicList<>(limit);
         this.size = 0;
     }
@@ -59,7 +59,7 @@ public class SimpleQueue<T> implements Queue<T> {
 
     @Override
     public boolean isEmpty() {
-        return this.startIndex == this.endIndex;
+        return this.size == 0;
     }
 
     @Override
