@@ -13,7 +13,7 @@ public class BinaryTreeNode<T extends Comparable<T>> implements Comparable<Binar
     @Setter
     private BinaryTreeNode<T> parent;
 
-    BinaryTreeNode(T value) {
+    public BinaryTreeNode(T value) {
         this.value = value;
     }
 
@@ -33,7 +33,7 @@ public class BinaryTreeNode<T extends Comparable<T>> implements Comparable<Binar
         return !this.hasLeft() && !this.hasRight() && this.hasParent();
     }
 
-    void setLeft(BinaryTreeNode<T> left) {
+    public void setLeft(BinaryTreeNode<T> left) {
         if (this.left == left) {
             return;
         }
@@ -41,7 +41,7 @@ public class BinaryTreeNode<T extends Comparable<T>> implements Comparable<Binar
         this.left.setParent(this);
     }
 
-    void setRight(BinaryTreeNode<T> right) {
+    public void setRight(BinaryTreeNode<T> right) {
         if (this.right == right) {
             return;
         }
