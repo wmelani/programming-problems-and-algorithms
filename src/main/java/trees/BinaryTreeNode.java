@@ -1,5 +1,6 @@
 package trees;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -7,7 +8,9 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 public class BinaryTreeNode<T extends Comparable<T>> implements Comparable<BinaryTreeNode<T>> {
+    @Setter(AccessLevel.PUBLIC)
     private T value;
+
     private BinaryTreeNode<T> left;
     private BinaryTreeNode<T> right;
     @Setter
@@ -15,6 +18,11 @@ public class BinaryTreeNode<T extends Comparable<T>> implements Comparable<Binar
 
     public BinaryTreeNode(T value) {
         this.value = value;
+    }
+
+    public BinaryTreeNode(T value, BinaryTreeNode<T> parent) {
+        this(value);
+        this.parent = parent;
     }
 
     public boolean hasLeft() {
@@ -38,6 +46,9 @@ public class BinaryTreeNode<T extends Comparable<T>> implements Comparable<Binar
             return;
         }
         this.left = left;
+        if (this.left == null) {
+            return;
+        }
         this.left.setParent(this);
     }
 
@@ -46,6 +57,9 @@ public class BinaryTreeNode<T extends Comparable<T>> implements Comparable<Binar
             return;
         }
         this.right = right;
+        if (this.right == null) {
+            return;
+        }
         this.right.setParent(this);
     }
 
