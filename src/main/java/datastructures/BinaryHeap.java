@@ -30,7 +30,9 @@ public class BinaryHeap<T> {
 
         this.swap(0, this.size() - 1);
         this.count--;
+        this.list.remove(this.size());
         this.siftDown(0);
+
         return result;
     }
 
@@ -69,10 +71,12 @@ public class BinaryHeap<T> {
                 var left = this.get(leftOption.get());
                 var right = this.get(rightOption.get());
                 var compared = this.comparator.compare(left, right);
+
+                // choose min value
                 if (compared < 0) {
-                    favoriteChildIndex = leftOption.get();
-                } else {
                     favoriteChildIndex = rightOption.get();
+                } else {
+                    favoriteChildIndex = leftOption.get();
                 }
             } else if (leftOption.isPresent()) {
                 favoriteChildIndex = leftOption.get();
@@ -82,10 +86,10 @@ public class BinaryHeap<T> {
 
             // see if worth swapping with child
             var compared = this.comparator.compare(this.get(currentIdx), this.get(favoriteChildIndex));
-            if (compared > 0) {
+            if (compared < 0) {
                 swap(currentIdx, favoriteChildIndex);
                 currentIdx = favoriteChildIndex;
-            }
+            } else return;
         }
     }
 
