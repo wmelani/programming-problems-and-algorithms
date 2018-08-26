@@ -1,6 +1,6 @@
 package trees;
 
-public class SampleTrees {
+class SampleTrees {
 
     static BinaryTreeNode<Integer> create3LevelTree() {
         BinaryTreeNode<Integer> tree = new BinaryTreeNode<>(1);
